@@ -1,0 +1,145 @@
+/* Universal reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+  transition: background-color 0.5s ease;
+  font-family: Arial, sans-serif;
+}
+
+/* Heart container setup */
+.heart-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  height: 100%;
+}
+
+.heart {
+  width: 400px;  /* Adjusted size */
+  height: 400px; /* Adjusted size */
+  background-color: #ff69b4;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(-45deg);
+  transition: transform 0.5s ease, width 0.5s ease, height 0.5s ease;
+}
+
+/* Heart before and after pseudo-elements */
+.heart:before,
+.heart:after {
+  content: "";
+  width: 400px;  /* Adjusted size */
+  height: 400px; /* Adjusted size */
+  background-color: #ff69b4;
+  position: absolute;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.heart:before {
+  top: -200px; /* Adjusted to keep the heart shape */
+  left: 0;
+}
+
+.heart:after {
+  top: 0;
+  left: 200px; /* Adjusted to keep the heart shape */
+}
+
+/* Heart inner container */
+.heart-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+}
+
+/* Message inside the heart */
+.message {
+  font-size: 18px;  /* Reduced font size */
+  color: white;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  font-weight: normal;  /* Reduced weight for better fit */
+  background-color: rgba(0, 0, 0, 0.6);  /* Background for better readability */
+  padding: 15px;  /* Adjusted padding for a more compact look */
+  border-radius: 10px;  /* Rounded corners */
+  max-width: 80%;  /* Prevent overflowing */
+  position: absolute;
+  z-index: 1;  /* Ensure the message stays above */
+  line-height: 1.4;  /* Increased line-height for better readability */
+}
+
+/* Open state for heart */
+.heart.open {
+  transform: rotate(0deg);
+  width: 500px;  /* Slightly increased size */
+  height: 500px; /* Slightly increased size */
+}
+
+/* Open state adjustments for heart pseudo-elements */
+.heart.open:before {
+  top: 0;
+}
+
+.heart.open:after {
+  left: 0;
+}
+
+/* Show message when heart is open */
+.heart.open .message {
+  opacity: 1;
+}
+
+/* Black background when heart is clicked */
+body.bg-black {
+  background-color: black;
+}
+
+body.bg-black .heart {
+  width: 500px;  /* Keep heart large but not too big */
+  height: 500px; /* Keep heart large but not too big */
+}
+
+body.bg-black .heart.open {
+  width: 500px;  /* Ensure heart stays big but not excessively */
+  height: 500px; /* Ensure heart stays big but not excessively */
+}
+
+/* Button container */
+.button-container {
+  position: absolute;
+  bottom: 50px;  /* Adjusted for larger elements */
+  text-align: center;
+}
+
+.transition-button {
+  background-color: #ff69b4;
+  padding: 20px 40px;  /* Adjusted padding */
+  font-size: 24px;  /* Slightly larger font size */
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;  /* Rounded corners for button */
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.transition-button:hover {
+  background-color: #ff3399;
+}
